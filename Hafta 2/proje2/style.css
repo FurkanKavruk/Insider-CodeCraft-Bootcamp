@@ -1,0 +1,141 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h2 {
+    color: #343a40;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+input,
+button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#description {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#taskList {
+    width: 100%;
+    max-width: 400px;
+}
+input {
+    border: 1px solid #ced4da;
+}
+
+.priority-options {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.task {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completed {
+    background-color: #d4edda;
+    text-decoration: line-through;
+    color: gray;
+}
+
+.task button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.deleteTask {
+    background-color: #dc3545;
+    color: white;
+}
+
+.deleteTask:hover {
+    background-color: #c82333;
+}
+
+.completeTask {
+    background-color: #007bff;
+    color: white;
+}
+
+.completeTask:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.task span {
+    text-align: left;
+}
+
+.filter-sort {
+    display: none;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.filter-sort button {
+    background-color: #17a2b8;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filter-sort button:hover {
+    background-color: #138496;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Görev Listesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Görev Listesi</h2>
+    <form id="taskForm">
+        <input type="text" id="title" placeholder="Görev Başlığı">
+        <input type="text" id="description" placeholder="Açıklama">
+        <div class="priority-options">
+            <label>
+                <input type="radio" name="priority" value="Düşük"> Düşük
+            </label>
+            <label>
+                <input type="radio" name="priority" value="Orta"> Orta
+            </label>
+            <label>
+                <input type="radio" name="priority" value="Yüksek"> Yüksek
+            </label>
+        </div>
+        <button type="submit">Ekle</button>
+    </form>
+    <p id="errorMessage" class="error"></p>
+    <div id="taskList"></div>
+    <div class="filter-sort">
+        <button id="filterCompleted">Sadece Tamamlananları Göster</button>
+        <button id="sortByPriority">Önceliğe Göre Sırala</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
