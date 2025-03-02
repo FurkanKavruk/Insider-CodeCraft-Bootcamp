@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="card-container" onclick="flipCard()">
+        <div class="credit-card" id="creditCard">
+            <div class="credit-card-front">
+                <span class="brand">VISA</span>
+                <div class="card-top">
+                    <img src="img.png" alt="chip" class="chip">
+                    <div class="card-number">•••• •••• •••• 3456</div>
+                </div>
+                <div class="card-details">
+                    <div class="card-holder">
+                        <span>Kart Sahibi</span>
+                        <p>John Doe</p>
+                    </div>
+                    <div class="expiry">
+                        <span>Son Kullanma</span>
+                        <p>12/28</p>
+                    </div>
+                </div>
+            </div>
+            <div class="credit-card">
+                <div class="credit-card-back">
+                    <div class="magnetic-strip"></div>
+                    <div class="cvv-section">
+                        <span class="cvv-label">CVV</span>
+                        <span class="cvv-code">123</span>
+                    </div>
+                    <div class="back-info">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                        <br>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flipCard() {
+            document.getElementById("creditCard").classList.toggle("flip");
+        }
+    </script>
+</body>
+
+</html>
