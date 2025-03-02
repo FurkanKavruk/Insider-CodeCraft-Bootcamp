@@ -71,7 +71,7 @@ body {
 }
 
 .menu ul li:hover {
-    background-color: var(--color6);
+    background-color: var(--color2);
     transform: scale(1.1);
 }
 
