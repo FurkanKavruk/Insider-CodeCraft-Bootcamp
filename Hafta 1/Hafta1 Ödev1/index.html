@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Kayıt Ol</h2>
+        <form method="POST" action="#">
+            <div class="name-inputs">
+                <input type="text" name="ad" placeholder="Adınız" required>
+                <input type="text" name="soyad" placeholder="Soyadınız" required>
+            </div>
+            <div class="margin">
+                <input type="tel" name="telefon" placeholder="Telefon Numarası" required>
+                <input type="email" name="email" placeholder="E-posta" required>
+            </div>
+            <div class="dob">
+                <select name="gun" required>
+                    <option value="">Gün</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <select name="ay" required>
+                    <option value="">Ay</option>
+                    <option value="Ocak">Ocak</option>
+                    <option value="Şubat">Şubat</option>
+                    <option value="Mart">Mart</option>
+                </select>
+                <select name="yil" required>
+                    <option value="">Yıl</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                </select>
+            </div>
+            <div class="margin">
+                <input type="password" name="sifre" placeholder="Şifre" required>
+                <input type="password" name="sifre_tekrar" placeholder="Şifre Tekrar" required>
+            </div>
+            <div class="gender">
+                <label><input type="radio" name="gender" value="Kadın" required> Kadın</label>
+                <label><input type="radio" name="gender" value="Erkek" required> Erkek</label>
+                <label><input type="radio" name="gender" value="Özel" required> Özel</label>
+            </div>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <a href="#">Giriş Yap</a>
+    </div>
+</body>
+</html>
