@@ -1,0 +1,34 @@
+{
+    "products": [
+      {
+        "name": "Kablosuz Kulaklık",
+        "price": "6499 TL",
+        "link": "https://www.hepsiburada.com/apple-airpods-3-nesil-ve-magsafe-sarj-kutusu-bluetooth-kulaklik-mme73tu-a-apple-turkiye-garantili-p-HBCV00000U44QM",
+        "details": "Uzun pil ömrü ve gürültü engelleme özelliğine sahip kablosuz kulaklık."
+      },
+      {
+        "name": "Akıllı Saat",
+        "price": "17999 TL",
+        "link": "https://www.hepsiburada.com/apple-watch-series-10-gps-46mm-jet-black-aluminium-case-with-black-sport-band-s-m-p-HBCV00006ZWFO3",
+        "details": "Kalp ritmi ölçme ve su geçirmezlik özellikleri ile akıllı saat."
+      },
+      {
+        "name": "Bluetooth Hoparlör",
+        "price": "7199 TL",
+        "link": "https://www.hepsiburada.com/charge5-bluetooth-hoparlor-ipx7-pembe-p-HBCV000004D07W",
+        "details": "Taşınabilir ve yüksek ses kalitesine sahip bluetooth hoparlör."
+      },
+      {
+        "name": "Gaming Mouse",
+        "price": "658 TL",
+        "link": "https://www.hepsiburada.com/logitech-g-g102-lightsync-rgb-aydinlatmali-8-000-dpi-kablolu-oyuncu-mouse-beyaz-p-HBV00000Y1NON",
+        "details": "Hassasiyet ayarı ve ergonomik tasarımı ile gaming mouse."
+      },
+      {
+        "name": "Mekanik Klavye",
+        "price": "1343 TL",
+        "link": "https://www.hepsiburada.com/rampage-kb-r86-umbra-siyah-usb-rainbow-aydinlatmali-red-switch-mekanik-gaming-oyuncu-klavye-p-HBCV00002SBPQ4",
+        "details": "RGB aydınlatmalı, mekanik tuşlara sahip oyuncu klavyesi."
+      }
+    ]
+  }

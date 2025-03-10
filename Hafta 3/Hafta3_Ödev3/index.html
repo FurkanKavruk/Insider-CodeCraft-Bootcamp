@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Başvuru Formu</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+
+        #applicationForm {
+            display: none;
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input,
+        select,
+        button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        #position {
+            width: 97%;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        label.error {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-top: -5px;
+        }
+
+        #successMessage {
+            display: none;
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+
+        #applyButton {
+            padding: 12px 20px;
+            width: 25%;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #applyButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="applyButton">Başvuru Yap</button>
+    <div id="applicationForm">
+        <h2>İş Başvuru Formu</h2>
+        <form id="jobApplicationForm">
+            <label for="name">Ad:</label>
+            <input type="text" id="name" name="name" placeholder="Adınızı girin" required>
+
+            <label for="surname">Soyad:</label>
+            <input type="text" id="surname" name="surname" placeholder="Soyadınızı girin" required>
+
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" placeholder="E-posta adresinizi girin" required>
+
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Telefon numaranızı girin" required>
+
+            <label for="birthdate">Doğum Tarihi:</label>
+            <input type="text" id="birthdate" name="birthdate" placeholder="GG.AA.YYYY" required>
+
+            <label for="position">Pozisyon:</label>
+            <select id="position" name="position" required>
+                <option value="">Seçiniz...</option>
+                <option value="Yazılım Geliştirici">Yazılım Geliştirici</option>
+                <option value="Grafik Tasarımcı">Grafik Tasarımcı</option>
+                <option value="Proje Yöneticisi">Proje Yöneticisi</option>
+            </select>
+
+            <button type="submit">Gönder</button>
+            <button type="button" id="closeBtn">Kapat</button>
+        </form>
+        <div id="successMessage">Başvurunuz başarıyla gönderildi!</div>
+    </div>
+    
+    <script>
+        $(document).ready(function () {
+            console.log("jQuery Validate Yüklü mü?:", typeof $.fn.validate !== "undefined");
+
+            $("#applyButton").click(function () {
+                $("#applicationForm").fadeIn();
+            });
+
+            $("#closeBtn").click(function () {
+                $("#applicationForm").fadeOut();
+            });
+
+            // Doğum tarihi için datepicker etkinleştirme
+            $("#birthdate").datepicker({
+                dateFormat: "dd.mm.yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1900:2025"
+            });
+
+            // Telefon için maskeleme
+            $("#phone").mask("(999) 999-9999");
+
+            setTimeout(function () {
+                if (typeof $.fn.validate !== "undefined") {
+                    $("#jobApplicationForm").validate({
+                        rules: {
+                            name: "required",
+                            surname: "required",
+                            email: {
+                                required: true,
+                                email: true
+                            },
+                            phone: {
+                                required: true,
+                                minlength: 14
+                            },
+                            birthdate: "required"
+                        },
+                        messages: {
+                            name: "Lütfen adınızı girin",
+                            surname: "Lütfen soyadınızı girin",
+                            email: "Lütfen geçerli bir e-posta adresi girin",
+                            phone: "Lütfen geçerli bir telefon numarası girin",
+                            birthdate: "Lütfen doğum tarihinizi girin",
+                            position: "Lütfen bir pozisyon seçin"
+                        },
+                        submitHandler: function (form) {
+                            $("#successMessage").fadeIn().delay(3000).fadeOut();
+                            form.reset();
+                        }
+                    });
+                } else {
+                    console.error("jQuery Validate yüklenemedi!");
+                }
+            }, 500);
+        });
+    </script>
+
+</body>
+
+</html>
