@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Listesi</title>
+</head>
+<body>
+    <div class="ins-api-users"></div>
+    <script>
+        const usersContainer = document.createElement('div');
+usersContainer.className = 'ins-api-users';
+document.body.appendChild(usersContainer);
+
+const style = document.createElement('style');
+style.innerHTML = `
+    .ins-api-users {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fefefe;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+  }
+  .ins-api-users h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .ins-api-users ul {
+    list-style: none;
+    padding: 0;
+  }
+  .ins-api-users li {
+    background: #ecf0f1;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  .ins-api-users li:hover {
+    transform: scale(1.03);
+  }
+  .ins-api-users button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease-in-out;
+    display: block;
+    margin-top: 10px;
+  }
+  .ins-api-users button:hover {
+    background: #2ecc71;
+  }
+
+`;
+document.head.appendChild(style);
+
+const oneDay = 24 * 60 * 60 * 1000;
+const storedUsers = localStorage.getItem('users');
+const storedTime = localStorage.getItem('usersTimestamp');
+const now = new Date().getTime();
+
+const displayUsers = (users) => {
+  usersContainer.innerHTML = `
+    <h2>Kullanıcı Listesi</h2>
+    <ul>
+      ${users.map(user => `
+        <li id="user-${user.id}">
+          <strong>${user.name}</strong><br>
+          Email: ${user.email}<br>
+          Adres: ${user.address.street}, ${user.address.suite}, ${user.address.city} - ${user.address.zipcode}<br>
+          <button onclick="deleteUser(${user.id})">Sil</button>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+};
+
+
+const deleteUser = (userId) => {
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+  users = users.filter(user => user.id !== userId);
+
+  users.length === 0
+    ? (localStorage.removeItem('users'), localStorage.removeItem('usersTimestamp'))
+    : localStorage.setItem('users', JSON.stringify(users));
+
+  displayUsers(users);
+};
+
+
+
+if (storedUsers && storedTime && now - storedTime < oneDay) {
+  const users = JSON.parse(storedUsers);
+  console.log('LocalStoragedan kullanıcı verisi yüklendi:', users);
+  displayUsers(users);
+} else {
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(users => {
+      console.log('Kullanıcı verisi çekildi:', users);
+      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('usersTimestamp', now);
+      displayUsers(users);
+    })
+    .catch(error => {
+      console.error('Fetch işlemi başarısız:', error);
+      usersContainer.innerHTML = '<p style="color: red; text-align: center;">Kullanıcı verisi alınırken hata oluştu. Lütfen daha sonra tekrar deneyin.</p>';
+    });
+}
+
+    </script>
+</body>
+</html>
